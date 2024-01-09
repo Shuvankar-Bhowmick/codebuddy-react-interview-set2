@@ -1,0 +1,13 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+}
+
+.seating {
+  display: flex;
+}
+
+.seat-number {
+  margin-right: 10px;
+}
