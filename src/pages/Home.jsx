@@ -15,11 +15,6 @@ const Home = () => {
       <div className="mb-7">
         <GetSeats />
       </div>
-
-      <Link to="/posts" className="flex items-center text-blue-600 hover:underline">
-        Posts
-        <Icon icon="mdi:arrow-right" className="ml-2" />
-      </Link>
     </div>
   );
 };
