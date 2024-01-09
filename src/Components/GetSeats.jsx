@@ -46,11 +46,11 @@ function GetSeats() {
     console.log(selectedSeats);
   }
 
-  function RenderSeating() {
+  function renderSeating() {
     return response.map((row, index) => (
-      <div key={row.id}>
+      <div key={row.id} className="text-center">
         <h3>Section {Number(rowValueForButton) - index}</h3>
-        <div className="seating">
+        <div className="seating flex justify-center">
           {row.seats.map((seat) => (
             <span key={seat.id} className="seat-number">
               {/* <p>{seat.seatNumber}</p> */}
@@ -137,7 +137,7 @@ function GetSeats() {
       {response !== null && (
         <>
           <div className="response mt-7 flex justify-center border border-solid border-black">
-            <div>{RenderSeating()}</div>
+            <div>{renderSeating()}</div>
           </div>
           <div className="response mt-7 flex justify-center ">
             <TotalCostOfSeats
