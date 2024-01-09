@@ -10,8 +10,6 @@ function GetSeats() {
   const [rowArray, setRowArray] = useState([]);
   const [totalCost, setTotalCost] = useState(0);
 
-  const rowValueForButton = rows;
-
   async function handleButtonSubmit(e) {
     // to prevent the page from loading
     e.preventDefault();
