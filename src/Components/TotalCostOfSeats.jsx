@@ -9,7 +9,6 @@ function TotalCostOfSeats({ rowArr, numOfSeats, setTotalCost, totalCost }) {
   }, 0);
 
   setTotalCost(costOfSeats + costOfTickets);
-  console.log("Row array", rowArr);
   return (
     <div className="rounded border bg-gray-100 p-4">
       <p className="text-xl font-bold text-gray-800">Total cost is ${totalCost}</p>

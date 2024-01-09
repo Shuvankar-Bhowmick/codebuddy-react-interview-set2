@@ -9,10 +9,12 @@ function GetSeats() {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [rowArray, setRowArray] = useState([]);
   const [totalCost, setTotalCost] = useState(0);
+  const [seatRowNum, setSeatRowNum] = useState("0");
 
   async function handleButtonSubmit(e) {
     // to prevent the page from loading
     e.preventDefault();
+    setSeatRowNum(rows);
 
     try {
       const resp = await fetch(`https://codebuddy.review/seats?count=${rows}`);
@@ -41,14 +43,13 @@ function GetSeats() {
       setRowArray((rowArr) => [...rowArr, row]);
       setSelectedSeats((seats) => [...seats, id]);
     }
-    console.log(selectedSeats);
   }
 
   function renderSeating() {
     return response.map((row, index) => (
-      <div key={row.id} className="text-center">
+      <div key={row.id} className="overflow-auto text-center">
         {/* <h3>Section {Number(rowValueForButton) - index}</h3> */}
-        <div className="seating flex justify-center">
+        <div className="seating flex justify-center ">
           {row.seats.map((seat) => (
             <span key={seat.id} className="seat-number">
               {/* <p>{seat.seatNumber}</p> */}
@@ -58,7 +59,7 @@ function GetSeats() {
                 isReserved={seat.isReserved}
                 id={seat.id}
                 selectedSeats={selectedSeats}
-                row={Number(seat.row) + 1}
+                row={Number(seatRowNum) - index}
                 rowArr={rowArray}
                 onHandleClick={() => !seat.isReserved && toggleSeat(Number(rows) - index, seat.id)}
               />
@@ -114,6 +115,9 @@ function GetSeats() {
             value={rows}
             onChange={handleInputChange}
             placeholder="Enter rows"
+            onWheel={(e) => {
+              e.target.blur();
+            }}
           />
         </div>
         <span>
@@ -124,8 +128,8 @@ function GetSeats() {
             Submit
           </button>
           <button
-            className="ml-2 mt-2 rounded bg-green-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
-            type="submit"
+            className="ml-2 mt-2 rounded bg-green-500 px-4 py-2 font-bold text-white hover:bg-green-700"
+            type="button"
             onClick={handleBuyTickets}
           >
             Buy tickets
@@ -134,7 +138,10 @@ function GetSeats() {
       </form>
       {response !== null && (
         <>
-          <div className="response mt-7 flex justify-center border border-solid border-black">
+          <div className="flex justify-center overflow-auto">
+            <p className="text-xl font-bold text-gray-800 underline">Seating arrangement</p>
+          </div>
+          <div className="mt-2 flex justify-center overflow-auto border border-solid border-black">
             <div>{renderSeating()}</div>
           </div>
           <div className="response mt-7 flex justify-center ">
