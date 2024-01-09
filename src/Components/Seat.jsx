@@ -13,7 +13,11 @@ function Seat({ seatNumber, isReserved, id, selectedSeats, onHandleClick, row })
         m-1 flex h-40 w-40 items-center justify-center rounded p-2`}
       onClick={onHandleClick}
     >
-      <div className={`${isReserved ? "text-black-500" : "text-lightred-500"}`}>
+      <div
+        className={`${
+          isReserved ? "text-black-500" : "text-lightred-500"
+        } text-xl font-bold text-gray-800`}
+      >
         <p>Seat {seatNumber}</p>
         <p>{isReserved ? "Reserved" : "Not Reserved"}</p>
         <p>Row {row}</p>

@@ -1,5 +1,4 @@
 import { Icon } from "@iconify/react";
-import { Link } from "react-router-dom";
 import GetSeats from "../Components/GetSeats";
 
 const Home = () => {
@@ -10,7 +9,7 @@ const Home = () => {
         Home
       </h1>
 
-      <h2 className="mb-3 text-2xl">Welcome to the home page!</h2>
+      <h2 className="mb-3 text-2xl">Welcome, buy tickets!</h2>
 
       <div className="mb-7">
         <GetSeats />

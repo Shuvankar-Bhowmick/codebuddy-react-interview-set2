@@ -49,7 +49,7 @@ function GetSeats() {
   function renderSeating() {
     return response.map((row, index) => (
       <div key={row.id} className="text-center">
-        <h3>Section {Number(rowValueForButton) - index}</h3>
+        {/* <h3>Section {Number(rowValueForButton) - index}</h3> */}
         <div className="seating flex justify-center">
           {row.seats.map((seat) => (
             <span key={seat.id} className="seat-number">
@@ -60,7 +60,7 @@ function GetSeats() {
                 isReserved={seat.isReserved}
                 id={seat.id}
                 selectedSeats={selectedSeats}
-                row={Number(rows) - index}
+                row={Number(seat.row) + 1}
                 rowArr={rowArray}
                 onHandleClick={() => !seat.isReserved && toggleSeat(Number(rows) - index, seat.id)}
               />
