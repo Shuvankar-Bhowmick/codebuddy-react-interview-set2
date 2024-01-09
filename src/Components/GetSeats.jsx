@@ -87,10 +87,10 @@ function GetSeats() {
       // Handle the error
     } finally {
       setRows("");
-      setResponse(null);
       setSelectedSeats([]);
       setRowArray([]);
       setTotalCost(0);
+      setResponse(null);
     }
   }
 
@@ -134,7 +134,7 @@ function GetSeats() {
           </button>
         </span>
       </form>
-      {response && (
+      {response !== null && (
         <>
           <div className="response mt-7 flex justify-center border border-solid border-black">
             <div>{RenderSeating()}</div>
@@ -144,10 +144,9 @@ function GetSeats() {
               rowArr={rowArray}
               numOfSeats={selectedSeats.length}
               setTotalCost={setTotalCost}
-            >
-              {totalCost}
-            </TotalCostOfSeats>
-          </div>{" "}
+              totalCost={totalCost}
+            />
+          </div>
         </>
       )}
     </div>

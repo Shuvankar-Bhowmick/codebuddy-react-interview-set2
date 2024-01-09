@@ -1,4 +1,6 @@
-function Seat({ seatNumber, isReserved, id, selectedSeats, onHandleClick, row, rowArr }) {
+import PropTypes from "prop-types";
+
+function Seat({ seatNumber, isReserved, id, selectedSeats, onHandleClick, row }) {
   return (
     <div
       className={`seat 
@@ -19,5 +21,14 @@ function Seat({ seatNumber, isReserved, id, selectedSeats, onHandleClick, row, r
     </div>
   );
 }
+
+Seat.propTypes = {
+  seatNumber: PropTypes.number.isRequired,
+  isReserved: PropTypes.bool.isRequired,
+  id: PropTypes.string.isRequired,
+  selectedSeats: PropTypes.arrayOf(PropTypes.number).isRequired,
+  onHandleClick: PropTypes.func.isRequired,
+  row: PropTypes.number.isRequired,
+};
 
 export default Seat;
