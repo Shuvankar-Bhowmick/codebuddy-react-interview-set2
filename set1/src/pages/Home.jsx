@@ -6,7 +6,7 @@ import { AddressForm } from "../Components/AddressForm";
 import { useNavigate } from "react-router-dom";
 import { TabComponent } from "../Components/TabComponent";
 
-const INITIAL_DATA = {
+const INIT = {
   firstName: "",
   lastName: "",
   address: "",
@@ -19,7 +19,7 @@ const INITIAL_DATA = {
 
 const Home = () => {
   const navigate = useNavigate();
-  const [data, setData] = useState(INITIAL_DATA);
+  const [data, setData] = useState(INIT);
 
   function updateFields(fields) {
     setData((prev) => {
@@ -55,7 +55,7 @@ const Home = () => {
     } catch (e) {
       console.log("Error while sending request: " + e);
     } finally {
-      setData(INITIAL_DATA);
+      setData(INIT);
     }
   }
 
